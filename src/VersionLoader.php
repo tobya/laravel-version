@@ -13,7 +13,7 @@ class VersionLoader
 
     public function __construct(?string $path = null)
     {
-        $this->path = $path ?? App::basePath('version.json');
+        $this->path = $path ?? App::basePath('config/app.php');
     }
 
     /**
@@ -21,6 +21,11 @@ class VersionLoader
      */
     public function load(): Version
     {
+        if (config('app.version',null) != null )
+        {
+            return new Version(config('app.version') ?? '1.0.0');
+        }
+
         if (File::exists($this->path)) {
             $data = json_decode(File::get($this->path), true);
 
@@ -38,6 +43,14 @@ class VersionLoader
      */
     public function save(Version $version): void
     {
+        $content = File::get($this->path);
+
+        $updated = $result = preg_replace(
+            '/ \'version\'(\s*)=>(\s*)\'(.*)\'/', "'version' => '". $version->get()."'",
+            $content);
+
+        File::put($this->path, $updated);
+        return;
         File::put($this->path, json_encode([
             'version' => $version->get(),
         ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."\n");
