@@ -46,7 +46,7 @@ class VersionLoader
         $content = File::get($this->path);
 
         $updated = $result = preg_replace(
-            '/ \'version\'(\s*)=>(\s*)\'(.*)\'/', "'version' => '". $version->get()."'",
+            '/\'version\'(\s*)=>(\s*)\'(.*)\'/', "'version' => '". $version->get()."'",
             $content);
 
         File::put($this->path, $updated);
