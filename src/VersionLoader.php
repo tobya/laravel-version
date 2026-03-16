@@ -45,6 +45,8 @@ class VersionLoader
     {
         $content = File::get($this->path);
 
+        // Find Version => '1.0.0' string in app.config
+        // PREG  'version'(\s*)=>(\s*)'(.*)'
         $updated = $result = preg_replace(
             '/\'version\'(\s*)=>(\s*)\'(.*)\'/', "'version' => '". $version->get()."'",
             $content);
