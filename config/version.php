@@ -28,6 +28,23 @@ return [
 
     'prefix' => 'v',
 
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | File Storage
+    |--------------------------------------------------------------------------
+    |
+    | Indicate where to store version string,
+    | json file is default, but config file is an option
+    |
+    */
+
+    'storage' => 'json-file', // json-file or config-file
+
+
+
     /*
     |--------------------------------------------------------------------------
     | Git Integration
@@ -44,5 +61,6 @@ return [
         'commit_message' => 'Bump version to {version}',
         'tag_format' => 'v{version}',
     ],
+
 
 ];
