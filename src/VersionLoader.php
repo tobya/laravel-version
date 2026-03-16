@@ -17,13 +17,13 @@ class VersionLoader
     {
         $this->storageType = config('version.storage') ;
 
-        if ($this->storageType == 'json-file')
-        {
-          $this->path = $path ?? App::basePath('version.json');
-        }
-        else  if ($this->storageType == 'config-file')
+        if ($this->storageType == 'config-file')
         {
           $this->path = $path ?? App::basePath('config/version.php');
+        }
+        else
+        {
+          $this->path = $path ?? App::basePath('version.json');
         }
 
 
@@ -35,14 +35,15 @@ class VersionLoader
     public function load(): Version
     {
 
-      if ($this->storageType == 'json-file')
-      {
-        return $this->loadFromJson();
-      }
-      else  // if ($this->storageType == 'config-file')
+      if ($this->storageType == 'config-file')
       {
         return $this->loadFromConfig();
       }
+      else
+      {
+        return $this->loadFromJson();
+      }
+
 
     }
 
@@ -78,21 +79,21 @@ class VersionLoader
      */
     public function save(Version $version): void
     {
-        $content = File::get($this->path);
-
-        // Find Version => '1.0.0' string in app.config
-        // PREG  'version'(\s*)=>(\s*)'(.*)'
-        $updated = $result = preg_replace(
-            '/\'version\'(\s*)=>(\s*)\'(.*)\'/', "'version' => '". $version->get()."'",
-            $content);
-
-        File::put($this->path, $updated);
-        return;
-        File::put($this->path, json_encode([
-            'version' => $version->get(),
-        ], JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES)."\n");
+       if ($this->storageType == 'config-file'){
+         $this->saveToConfig($version);
+       }
+       else
+       {
+         $this->saveToJson($version);
+       }
     }
 
+  /**
+   * Save the version to the Laravel config file
+   * This involves finding via regex and replacing.
+   * @param Version $version
+   * @return void
+   */
     public function saveToConfig(Version $version)
     {
        $content = File::get($this->path);
@@ -110,6 +111,11 @@ class VersionLoader
 
     }
 
+  /**
+   * Save the version to the version.json file
+   * @param Version $version
+   * @return void
+   */
     public function saveToJson(Version $version) : void
     {
 
