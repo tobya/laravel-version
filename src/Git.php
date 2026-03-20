@@ -25,11 +25,11 @@ class Git
      */
     public function commit(string $version, string $filePath): bool
     {
-        $message = $this->formatMessage(config('version.git.commit_message'), $version);
+        $message = addslashes($this->formatMessage(config('version.git.commit_message'), $version));
 
         Process::run("git add {$filePath}");
 
-        $result = Process::run("git commit -m {$message}");
+        $result = Process::run("git commit -m \"{$message}\"");
 
         return $result->successful();
     }
