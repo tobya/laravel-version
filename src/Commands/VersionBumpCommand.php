@@ -101,6 +101,11 @@ class VersionBumpCommand extends Command
             return;
         }
 
+        // check if we wish to tag also
+        if (!config('version.git.tag_enabled')) {
+          return;
+        }
+
         if ($git->tag($newVersion)) {
             $tagFormat = config('version.git.tag_format');
             $tagName = str_replace('{version}', $newVersion, $tagFormat);

@@ -137,14 +137,18 @@ class VersionSetCommand extends Command
             return;
         }
 
+        // check should we tag.
+        if (!config('version.git.tag_enabled')) {
+          return;
+        }
+
         if (! $this->git->tag($newVersion)) {
             $this->warn('Failed to create git tag.');
-
             return;
         }
 
         $tagFormat = config('version.git.tag_format');
         $tagName = str_replace('{version}', $newVersion, $tagFormat);
-        $this->info("Tagged: {$tagName}");
+        $this->info("Tagged x: {$tagName}");
     }
 }
