@@ -1,16 +1,21 @@
 <p align="">
-    <a href="https://packagist.org/packages/eznix86/laravel-version"><img src="https://img.shields.io/packagist/v/eznix86/laravel-version.svg?style=flat-square" alt="Latest Version on Packagist"></a>
-    <a href="https://packagist.org/packages/eznix86/laravel-version"><img src="https://img.shields.io/packagist/dt/eznix86/laravel-version.svg?style=flat-square" alt="Total Downloads"></a>
+    <a href="https://packagist.org/packages/tobya/laravel-version"><img src="https://img.shields.io/packagist/v/tobya/laravel-version.svg?style=flat-square" alt="Latest Version on Packagist"></a>
+    <a href="https://packagist.org/packages/tobya/laravel-version"><img src="https://img.shields.io/packagist/dt/tobya/laravel-version.svg?style=flat-square" alt="Total Downloads"></a>
 </p>
 
 # Laravel Version
 
 Semantic versioning for Laravel applications with git integration.
 
+## History
+
+This is based on eznix86/laravel-version at https://github.com/eznix86/laravel-version . However I required some changes that did not align
+so i have created this version.  
+
 ## Installation
 
 ```bash
-composer require eznix86/laravel-version
+composer require tobya/laravel-version
 ```
 
 Publish the configuration and version file:
