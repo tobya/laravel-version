@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version\Commands;
+namespace Tobya\Version\Commands;
 
-use Eznix86\Version\Version;
+use Tobya\Version\Version;
 use Illuminate\Console\Command;
 
 class VersionShowCommand extends Command

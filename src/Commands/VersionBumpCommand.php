@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version\Commands;
+namespace Tobya\Version\Commands;
 
-use Eznix86\Version\Git;
-use Eznix86\Version\Version;
-use Eznix86\Version\VersionLoader;
+use Tobya\Version\Git;
+use Tobya\Version\Version;
+use Tobya\Version\VersionLoader;
 use Illuminate\Console\Command;
 use Illuminate\Console\Prohibitable;
 

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Version;
+use Tobya\Version\Version;
 use PHLAK\SemVer\Version as SemVer;
 
 describe('Version', function (): void {

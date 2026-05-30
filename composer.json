@@ -1,5 +1,5 @@
 {
-  "name": "eznix86/laravel-version",
+  "name": "tobya/laravel-version",
   "description": "Semantic app versioning for Laravel with git integration.",
   "type": "library",
   "require": {
@@ -9,7 +9,7 @@
   "license": "MIT",
   "autoload": {
     "psr-4": {
-      "Eznix86\\Version\\": "src/"
+      "Tobya\\Version\\": "src/"
     },
     "files": [
       "src/helpers.php"
@@ -24,6 +24,9 @@
     {
       "name": "Bruno Bernard",
       "email": "contact.brunobernard@gmail.com"
+    },    {
+      "name": "Toby Allen",
+      "email": "tobyallen@toflidium.com"
     }
   ],
   "require-dev": {
@@ -38,10 +41,10 @@
   "extra": {
     "laravel": {
       "providers": [
-        "Eznix86\\Version\\VersionServiceProvider"
+        "Tobya\\Version\\VersionServiceProvider"
       ],
       "aliases": {
-        "Version": "Eznix86\\Version\\Facades\\Version"
+        "Version": "Tobya\\Version\\Facades\\Version"
       }
     }
   },

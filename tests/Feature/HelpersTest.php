@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Facades\Version as VersionFacade;
-use Eznix86\Version\Version;
+use Tobya\Version\Facades\Version as VersionFacade;
+use Tobya\Version\Version;
 
 describe('version() helper', function (): void {
     it('returns Version instance', function (): void {
@@ -18,7 +18,7 @@ describe('version() helper', function (): void {
     });
 
     it('allows chaining version methods', function (): void {
-        $this->app->singleton(Version::class, fn (): \Eznix86\Version\Version => new Version('1.0.0'));
+        $this->app->singleton(Version::class, fn (): \Tobya\Version\Version => new Version('1.0.0'));
 
         $result = version()->incrementMinor()->get();
 
@@ -26,13 +26,13 @@ describe('version() helper', function (): void {
     });
 
     it('provides access to version string via get()', function (): void {
-        $this->app->singleton(Version::class, fn (): \Eznix86\Version\Version => new Version('3.2.1'));
+        $this->app->singleton(Version::class, fn (): \Tobya\Version\Version => new Version('3.2.1'));
 
         expect(version()->get())->toBe('3.2.1');
     });
 
     it('provides access to version components', function (): void {
-        $this->app->singleton(Version::class, fn (): \Eznix86\Version\Version => new Version('5.4.3-beta.2'));
+        $this->app->singleton(Version::class, fn (): \Tobya\Version\Version => new Version('5.4.3-beta.2'));
 
         expect(version()->major())->toBe(5);
         expect(version()->minor())->toBe(4);
@@ -44,7 +44,7 @@ describe('version() helper', function (): void {
 
 describe('Version Facade', function (): void {
     beforeEach(function (): void {
-        $this->app->singleton(Version::class, fn (): \Eznix86\Version\Version => new Version('2.0.0'));
+        $this->app->singleton(Version::class, fn (): \Tobya\Version\Version => new Version('2.0.0'));
     });
 
     it('resolves to Version instance', function (): void {

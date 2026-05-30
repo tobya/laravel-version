@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Version;
+use Tobya\Version\Version;
 
 describe('version:show command', function (): void {
     beforeEach(function (): void {

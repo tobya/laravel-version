@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version;
+namespace Tobya\Version;
 
 use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Process;

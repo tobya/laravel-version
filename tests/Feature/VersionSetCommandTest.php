@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Commands\VersionSetCommand;
-use Eznix86\Version\Version;
-use Eznix86\Version\VersionLoader;
+use Tobya\Version\Commands\VersionSetCommand;
+use Tobya\Version\Version;
+use Tobya\Version\VersionLoader;
 use Illuminate\Process\FakeProcessResult;
 use Illuminate\Support\Facades\Process;
 

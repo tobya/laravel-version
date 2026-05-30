@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Git;
-use Eznix86\Version\Version;
-use Eznix86\Version\VersionLoader;
+use Tobya\Version\Git;
+use Tobya\Version\Version;
+use Tobya\Version\VersionLoader;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Blade;
 

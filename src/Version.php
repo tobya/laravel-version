@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version;
+namespace Tobya\Version;
 
-use Eznix86\Version\Commands\VersionBumpCommand;
-use Eznix86\Version\Commands\VersionSetCommand;
+use Tobya\Version\Commands\VersionBumpCommand;
+use Tobya\Version\Commands\VersionSetCommand;
 use PHLAK\SemVer\Version as SemVer;
 
 class Version implements \Stringable
