@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Tests;
 
-use Eznix86\Version\Facades\Version;
-use Eznix86\Version\VersionServiceProvider;
+use Tobya\Version\Facades\Version;
+use Tobya\Version\VersionServiceProvider;
 use Orchestra\Testbench\TestCase as BaseTestCase;
 
 abstract class TestCase extends BaseTestCase

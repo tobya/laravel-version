@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version;
+namespace Tobya\Version;
 
-use Eznix86\Version\Commands\VersionBumpCommand;
-use Eznix86\Version\Commands\VersionSetCommand;
-use Eznix86\Version\Commands\VersionShowCommand;
+use Tobya\Version\Commands\VersionBumpCommand;
+use Tobya\Version\Commands\VersionSetCommand;
+use Tobya\Version\Commands\VersionShowCommand;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Foundation\Console\AboutCommand;
 use Illuminate\Support\Facades\Blade;

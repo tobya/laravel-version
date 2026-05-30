@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace Eznix86\Version\Facades;
+namespace Tobya\Version\Facades;
 
-use Eznix86\Version\Version as VersionInstance;
+use Tobya\Version\Version as VersionInstance;
 use Illuminate\Support\Facades\Facade;
 
 /**
@@ -36,7 +36,7 @@ use Illuminate\Support\Facades\Facade;
  * @method static bool eq(VersionInstance|string $version)
  * @method static bool neq(VersionInstance|string $version)
  *
- * @see \Eznix86\Version\Version
+ * @see \Tobya\Version\Version
  */
 class Version extends Facade
 {

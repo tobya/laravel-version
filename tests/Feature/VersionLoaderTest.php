@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Version;
-use Eznix86\Version\VersionLoader;
+use Tobya\Version\Version;
+use Tobya\Version\VersionLoader;
 
 beforeEach(function (): void {
     $this->tempPath = sys_get_temp_dir().'/version_test_'.uniqid().'.json';

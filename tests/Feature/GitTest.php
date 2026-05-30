@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Git;
+use Tobya\Version\Git;
 use Illuminate\Process\FakeProcessResult;
 use Illuminate\Support\Facades\Process;
 

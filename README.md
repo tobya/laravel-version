@@ -97,7 +97,7 @@ The `@version` directive automatically includes the configured prefix.
 ### Facade
 
 ```php
-use Eznix86\Version\Facades\Version;
+use Tobya\Version\Facades\Version;
 
 Version::get();
 Version::incrementMinor();
@@ -156,7 +156,7 @@ This will display your application version in the Application section.
 To prevent accidental version changes in production, add this to your `AppServiceProvider`:
 
 ```php
-use Eznix86\Version\Version;
+use Tobya\Version\Version;
 
 public function boot(): void
 {
@@ -167,8 +167,8 @@ public function boot(): void
 Or prohibit commands individually:
 
 ```php
-use Eznix86\Version\Commands\VersionBumpCommand;
-use Eznix86\Version\Commands\VersionSetCommand;
+use Tobya\Version\Commands\VersionBumpCommand;
+use Tobya\Version\Commands\VersionSetCommand;
 
 public function boot(): void
 {

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Commands\VersionBumpCommand;
-use Eznix86\Version\Version;
-use Eznix86\Version\VersionLoader;
+use Tobya\Version\Commands\VersionBumpCommand;
+use Tobya\Version\Version;
+use Tobya\Version\VersionLoader;
 use Illuminate\Process\FakeProcessResult;
 use Illuminate\Support\Facades\Process;
 

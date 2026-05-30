@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use Eznix86\Version\Version;
+use Tobya\Version\Version;
 
 if (! function_exists('version')) {
     /**
