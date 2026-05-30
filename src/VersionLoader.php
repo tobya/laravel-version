@@ -6,6 +6,7 @@ namespace Eznix86\Version;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\File;
+use JsonException;
 
 class VersionLoader
 {
@@ -63,7 +64,11 @@ class VersionLoader
     public function loadFromJson() : Version
     {
         if (File::exists($this->path)) {
-            $data = json_decode(File::get($this->path), true);
+            $data = json_decode(File::get($this->path), true, 512, JSON_THROW_ON_ERROR);
+
+            if (! is_array($data)) {
+                throw new JsonException('The version file must decode to a JSON object.');
+            }
 
             return new Version($data['version'] ?? '1.0.0');
         }

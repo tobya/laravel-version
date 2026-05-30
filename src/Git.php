@@ -27,10 +27,9 @@ class Git
     {
         $message = addslashes($this->formatMessage(config('version.git.commit_message'), $version));
 
-        Process::run("git add {$filePath}");
+        Process::run(['git', 'add', $filePath]);
 
-        $result = Process::run("git commit -m \"{$message}\"");
-
+        $result = Process::run(['git', 'commit', '-m', $message]);
 
         return $result->successful();
     }
@@ -43,7 +42,7 @@ class Git
         $tagName = addslashes($this->formatMessage(config('version.git.tag_format'), $version));
 
 
-        $result = Process::run("git tag {$tagName}");
+        $result = Process::run(['git', 'tag', $tagName]);
 
         return $result->successful();
     }
@@ -78,7 +77,13 @@ class Git
                 }
             })
             ->filter()
-            ->sort(fn (Version $a, Version $b): int => $a->gt($b) ? 1 : -1)
+            ->sort(function (Version $a, Version $b): int {
+                if ($a->eq($b)) {
+                    return 0;
+                }
+
+                return $a->gt($b) ? 1 : -1;
+            })
             ->values();
     }
 
