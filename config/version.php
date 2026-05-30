@@ -4,6 +4,18 @@ declare(strict_types=1);
 
 return [
 
+
+    /*
+    |--------------------------------------------------------------------------
+    | Version 
+    |--------------------------------------------------------------------------
+    |
+    | This value is the version string
+    |
+    */
+
+    'version' => '1.0.0',
+
     /*
     |--------------------------------------------------------------------------
     | Version Prefix
@@ -15,6 +27,23 @@ return [
     */
 
     'prefix' => 'v',
+
+
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | File Storage
+    |--------------------------------------------------------------------------
+    |
+    | Indicate where to store version string,
+    | json file is default, but config file is an option
+    |
+    */
+
+    'storage' => 'json-file', // json-file or config-file
+
+
 
     /*
     |--------------------------------------------------------------------------
@@ -32,5 +61,6 @@ return [
         'commit_message' => 'Bump version to {version}',
         'tag_format' => 'v{version}',
     ],
+
 
 ];

@@ -76,7 +76,7 @@ describe('Git', function (): void {
             $git = new Git;
             $git->commit('1.0.0', '/path/to/version.json');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git add /path/to/version.json');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'add', '/path/to/version.json']);
         });
 
         it('uses configured commit message with version placeholder', function (): void {
@@ -87,7 +87,7 @@ describe('Git', function (): void {
             $git = new Git;
             $git->commit('3.0.0', '/path/to/version.json');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git commit -m Bump version to 3.0.0');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'commit', '-m', 'Bump version to 3.0.0']);
         });
 
         it('uses custom commit message from config', function (): void {
@@ -99,7 +99,42 @@ describe('Git', function (): void {
             $git = new Git;
             $git->commit('4.0.0', '/path/to/version.json');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git commit -m Release 4.0.0');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'commit', '-m', 'Release 4.0.0']);
+        });
+
+        it('passes double quotes without shell escaping', function (): void {
+            config(['version.git.commit_message' => 'Release "{version}"']);
+            Process::fake([
+                '*' => new FakeProcessResult,
+            ]);
+
+            $git = new Git;
+            $git->commit('4.0.0', '/path/to/version.json');
+
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'commit', '-m', 'Release "4.0.0"']);
+        });
+
+        it('passes single quotes without shell escaping', function (): void {
+            config(['version.git.commit_message' => "Release '{version}'"]);
+            Process::fake([
+                '*' => new FakeProcessResult,
+            ]);
+
+            $git = new Git;
+            $git->commit('4.0.0', '/path/to/version.json');
+
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'commit', '-m', "Release '4.0.0'"]);
+        });
+
+        it('passes file paths with spaces as a single argument', function (): void {
+            Process::fake([
+                '*' => new FakeProcessResult,
+            ]);
+
+            $git = new Git;
+            $git->commit('1.0.0', '/path with spaces/version file.json');
+
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'add', '/path with spaces/version file.json']);
         });
     });
 
@@ -134,7 +169,7 @@ describe('Git', function (): void {
             $git = new Git;
             $git->tag('2.5.0');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git tag v2.5.0');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'tag', 'v2.5.0']);
         });
 
         it('uses custom tag format from config', function (): void {
@@ -146,7 +181,7 @@ describe('Git', function (): void {
             $git = new Git;
             $git->tag('1.2.3');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git tag release-1.2.3');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'tag', 'release-1.2.3']);
         });
 
         it('handles pre-release versions', function (): void {
@@ -157,7 +192,7 @@ describe('Git', function (): void {
             $git = new Git;
             $git->tag('1.0.0-alpha.1');
 
-            Process::assertRan(fn ($process): bool => $process->command === 'git tag v1.0.0-alpha.1');
+            Process::assertRan(fn ($process): bool => $process->command === ['git', 'tag', 'v1.0.0-alpha.1']);
         });
     });
 

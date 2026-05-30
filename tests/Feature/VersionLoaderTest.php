@@ -53,6 +53,14 @@ describe('VersionLoader', function (): void {
             expect($version->get())->toBe('1.0.0');
         });
 
+        it('throws a clear exception when version file contains invalid json', function (): void {
+            file_put_contents($this->tempPath, '{"version":');
+            $loader = new VersionLoader($this->tempPath);
+
+            expect(fn (): Version => $loader->load())
+                ->toThrow(JsonException::class);
+        });
+
         it('loads pre-release version correctly', function (): void {
             file_put_contents($this->tempPath, json_encode(['version' => '1.0.0-beta.3']));
             $loader = new VersionLoader($this->tempPath);
